@@ -1,0 +1,33 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Club :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Club</label>
+      <input type="text" [(ngModel)]="newClub.idClub" name="idClub" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Club</label>
+      <input type="text" [(ngModel)]="newClub.nameClub" name="nameClub" class="form-control">
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Nombre de Champions League</label>
+      <input type="number" [(ngModel)]="newClub.numberofchampionsleague" name="numberChampions" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+<label>League</label>
+<select class="form-control form-control-lg" id="idCat" name="idCat"
+[(ngModel)]="newIdl">
+@for(l of Leagues; track l.leagueID){
+<option [value]="l.leagueID"> {{l.leagueName}} </option>
+}
+</select>
+</div>
+    <div class="mt-2">
+      <button type="button" (click)="addClub()" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>

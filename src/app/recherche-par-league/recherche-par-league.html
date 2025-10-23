@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="container">
+<div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+<label>Leagues </label>
+<select class="form-control form-control-lg" id="leagueID" name="leagueID"
+[(ngModel)]="Idl" (change)="onChange()">
+@for(l of leagues;track l.leagueID)
+{
+<option value="{{l.leagueID}}"> {{l.leagueName}} </option>
+}
+</select>
+</div>
+<div class="card shadow mb-4">
+<div class="card-body">
+<table class="table table-striped">
+<tr> <th>Id</th><th>Nom</th> <th>nombre de champions leagues</th>
+<th>Catégorie</th></tr>
+@for (club of clubs; track club.idClub)
+{
+<tbody >
+<tr >
+<td>{{club.idClub}}</td>
+<td>{{club.nameClub}}</td>
+<td>{{club.numberofchampionsleague}}</td>
+@if(club.league){
+<td>{{club.league.leagueName}}</td> }
+@else {
+<td>PAS DE Leagues</td>
+}
+<!--
+<td><a class="btn btn-danger"
+(click)="supprimerclub(club)">Supprimer</a></td>
+<td><a class="btn btn-success"
+[routerLink]="['/updateclub',club.idclub]">Modifier</a></td> -->
+</tr>
+</tbody>
+}
+</table>
+</div>
+</div>
+</div>

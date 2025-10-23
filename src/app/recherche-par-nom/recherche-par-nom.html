@@ -1,0 +1,45 @@
+<div class="container">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label for="nom" class="mr-2">Nom Produit en tapant</label>
+      <input
+        id="nom"
+        #nom
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        class="form-control"
+        placeholder="Tapez le nom du produit..."
+      />
+    </div>
+  </form>
+
+  <div class="card shadow mb-4 mt-3">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Nombre de Champions League</th>
+            <th>League</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (club of clubs | searchFilter: searchTerm; track club.idClub) {
+            <tr>
+              <td>{{ club.idClub }}</td>
+              <td>{{ club.nameClub }}</td>
+              <td>{{ club.numberofchampionsleague }}</td>
+
+              @if (club.league) {
+                <td>{{ club.league.leagueID }}</td>
+              } @else {
+                <td>PAS DE league</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+<div class="card shadow mb-4">
+<div class="card-body">
+<table class="table table-striped">
+<tr> <th>n° </th><th>Id</th><th>Nom</th> <th>nombre de champions league</th><th>League</th></tr>
+@for (club of Clubs; track club.idClub ;let index =$index; let nbr=$count;let first = $first)
+{
+
+<tbody >
+  @if(first)
+{ <h1>Nombre : {{nbr}}</h1>}
+
+<tr >
+<td>{{index}}</td>
+<td>{{club.idClub}}</td>
+<td>{{club.nameClub}}</td>
+<td>{{club.numberofchampionsleague}}</td>
+<td>{{club.league?.leagueName}}</td>
+@if(auth.isAdmin()) {
+
+<td><a class="btn btn-danger" (click)="supprimerClub(club)">Supprimer</a></td>
+<td><a class="btn btn-success" [routerLink]="['/updateClub',club.idClub]">Modifier</a></td>
+}
+</tr>
+
+</tbody>
+}
+@empty {
+<h1>Aucun Club trouvé !</h1>
+}
+
+</table>
+
+
+</div>
+</div>

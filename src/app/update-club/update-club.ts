@@ -39,7 +39,7 @@ this.Leagues= l._embedded.leagues;
     this.currentclub.league = this.Leagues.find(
       (l) => l.leagueID == this.updateleagueID
     )!;
-    this.clubService.updateClub(this.currentclub).subscribe((club) => {
+    this.clubService.UpdateClub(this.currentclub).subscribe((club) => {
       this.router.navigate(['/clubs']);
     });
   }
